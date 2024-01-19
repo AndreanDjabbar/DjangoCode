@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock title %}
+
+{% block content %}
+    <h1>Welcome !</h1>
+    <h5>Enjoy our fresh news</h5>
+    <hr>
+    <ul class="nav">
+        {% for data in categories %}
+        <li>
+            <a href="{% url 'news:category' data.category %}" class="nav-link">{{data.category}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <br><br>
+        {% for data in all_data %}
+            <a href="{% url 'news:post' data.slug %}"><h3>{{data.title}}</h3></a>
+            <p>{{data.published}}</p>
+            <br>
+        {% endfor %}
+{% endblock content %}

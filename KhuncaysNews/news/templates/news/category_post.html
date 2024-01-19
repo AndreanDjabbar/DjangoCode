@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock title %}
+
+{% block content %}
+    <h1>News Categorized by "{{title}}"</h1>
+    <h5>Enjoy our fresh news</h5>
+    <hr>
+    <br><br>
+        {% for data in all_data %}
+            <a href="{% url 'news:post' data.slug %}" class="nav-link"><h3>{{data.title}}</h3></a>
+            <p>{{data.published}}</p>
+        {% endfor %}
+    <a href="{% url 'news:home' %}" class="btn btn-success">Back</a>
+{% endblock content %}

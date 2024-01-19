@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock title %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+    <hr>
+    <br>
+    <p>{{data.content}}</p>
+    <br><br>
+    <b>Published on: {{data.published}}</b>
+    <br>
+    <b>Updated on  : {{data.updated}}</b>
+    <hr>
+    <a href="{% url 'news:home' %}" class="btn btn-success">Back</a>
+    <a href="{% url 'news:update' data.id %}" class="btn btn-warning">Update</a>
+    <a href="{% url 'news:delete' data.id %}" class="btn btn-danger">Delete</a>
+{% endblock content %}

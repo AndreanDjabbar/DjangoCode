@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andrean</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/media.css' %}" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Andrean Gusman Djabbar</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="{% url 'news:home' %}">Home</a></li>
+          <li><a href="{% url 'news:add' %}">Add</a></li>
+          <li><a href="{% url 'news:profile' %}">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Andrean Gusman Djabbar</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="{% url 'news:home' %}">Home</a></li>
+          <li><a href="{% url 'news:add' %}">Add</a></li>
+          <li><a href="{% url 'news:profile' %}">About</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="{% static 'img/Andrean_circle.png' %}" alt="Andrean Picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Andrean</h1>
+        <p class="section__text__p2">Backend Developer</p>
+        <div id="socials-container">
+          <a href="https://www.linkedin.com/in/andrean-gusman-djabbar-5734b0276/" target="_blank">
+            <img src="{% static 'img/linkedin.png' %}" alt="My LinkedIn profile" class="icon" />
+        </a>
+        <a href="https://github.com/AndreanDjabbar" target="_blank">
+            <img src="{% static 'img/github.png' %}" alt="My Github profile" class="icon" />
+        </a>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="{% static 'img/email.png' %}"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:examplemail@gmail.com" target="_blank">Andreanjabar18@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="{% static 'img/linkedin.png' %}"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/andrean-gusman-djabbar-5734b0276/" target="_blank">Andrean Gusman Djabbar</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="{% url 'news:home' %}">Home</a></li>
+            <li><a href="{% url 'news:add' %}">Add</a></li>
+            <li><a href="{% url 'news:profile' %}">About Us</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2023 Andrean Gusman Djabbar. All Rights Reserved.</p>
+    </footer>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
