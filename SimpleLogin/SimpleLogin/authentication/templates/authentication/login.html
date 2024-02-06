@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    <table>
+        {% for form in forms %}
+            <div>
+                {{form.label_tag}}
+                {{form}}
+                </div>
+                <br><br>
+            </div>
+        {% endfor %}
+        {% if error %}
+            {{error}}
+            <br><br>
+            <a href="{% url 'authentication:login' %}"
+            class="btn btn-warning">Back</a>
+            <br>
+            {% else %}
+            <button type="submit"
+            class="btn btn-success">Login</button>
+            {% endif %}
+    </table>
+</form>
+{% endblock %}

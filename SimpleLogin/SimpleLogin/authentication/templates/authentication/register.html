@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br><br>
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        <table>
+            {% for form in forms %}
+                <div>
+                    {{form.label_tag}}
+                    {{form}}
+                    </div>
+                    {% if form.errors %}
+                        <p class="text-danger">{{ form.errors.as_text }}</p>
+                    {% endif %}
+                    <br><br>
+                </div>
+            {% endfor %}
+            <br><br>
+            <button type="submit"
+            class="btn btn-success">Register</button>
+        </table>
+    </form>
+{% endblock %}
