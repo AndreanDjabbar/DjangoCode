@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    {{forms|crispy}}
+    <br><br>
+    {% if error %}
+    {{error}}
+    <br><br>
+    <a href="{% url 'authentication:login' %}"
+    class="btn btn-warning">Back</a>
+    <br>
+    {% else %}
+    <button type="submit"
+    class="btn btn-success">Login</button>
+    {% endif %}
+</form>
+{% endblock %}
