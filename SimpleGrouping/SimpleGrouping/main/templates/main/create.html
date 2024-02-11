@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for form in forms %}
+        <div class="form-group">
+            {{form.label_tag}}
+            {{form}}
+        </div>
+        <br><br>
+        <button type="submit"
+        class="btn btn-success">Create</button>
+        {% endfor %}
+    </form>
+{% endblock %}

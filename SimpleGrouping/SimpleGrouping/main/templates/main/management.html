@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for user in users %}
+            {% if not user.is_superuser %}
+                <div>
+                    <input type="checkbox"
+                    name="targets[]"
+                    value="{{user.id}}">
+                    <label for="">{{user.username}}</label>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <br><br>
+        <div>
+            <label for="role">Select Role: </label>
+            <select name="role" id="role">
+                <option value="CommonUser">CommonUser</option>
+                <option value="Editor">Editor</option>
+                <option value="Staff">Staff</option>
+            </select>
+        </div>
+        <br><br>
+        <button type="submit"
+        class="btn btn-success">Update</button>
+    </form>
+{% endblock %}
