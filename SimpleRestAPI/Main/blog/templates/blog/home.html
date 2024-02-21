@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block nav %}
+    {% include "base.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="text-center"
+    style="margin-top: 300px; display: flex; flex-direction: column; gap: 100px;">
+        <h4>Choose the method to show API</h4>
+        <div style="display: flex; gap: 50px; align-items: center; justify-content: center;">
+            <a 
+            href="{% url 'blog:django_api_home' %}"
+            class="btn btn-success"
+            target="_blank">Django Response</a>
+            <a 
+            href="{% url 'blog:json_api_home' %}"
+            class="btn btn-primary" target="_blank">Json Response</a>
+        </div>
+    </div>
+{% endblock %}
