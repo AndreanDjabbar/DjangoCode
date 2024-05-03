@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br><br>
+<form action="" method="post" class="form" style="margin: 20px;">
+    {% csrf_token %}
+    <table>
+        {% for form in forms %}
+            <div>
+                {{form.label_tag}}
+                {{form}}
+            </div>
+                <br><br>
+            </div>
+        {% endfor %}
+        <button type="submit"
+        class="btn btn-success">Create</button>
+    </table>
+</form>
+{% endblock %}
