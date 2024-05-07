@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load my_templatetags %}
+
+{% block content %}
+    <br><br>
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{product.product_name}}</h5>
+                <p class="card-text">Desctiption: {{product.product_description}}</p>
+                <p>Stock: <span id="stok">{{product.product_stock}}</span></p>
+                <br><br>
+                <div class="row justify-content-center">
+                  <div class="col-md-2">Quantity:</div>
+                  <div class="col-md-2">
+                  <select class="form-select form-select-sm" aria-label="Default select example" id="quantity-cart">
+                    {% for i in product.product_stock|range_filter %}
+                      <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                  </select>
+                  </div>
+                </div>
+                <br><br>
+                <div>
+                  <a href="../{{previous_page}}" class="btn btn-warning">Back</a>    
+                    <button type="button" class="btn btn-success" id="add-cart" value="{{product.id}}">Add to Cart</button>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        $(document).on("click", "#add-cart", function(e) {
+            e.preventDefault()
+            $.ajax({
+                type:"POST",
+                url:"{% url 'product:cart_add' %}",
+                data:{
+                    product_id:$("#add-cart").val(),
+                    product_quantity:$("#quantity-cart option:selected").text(),
+                    csrfmiddlewaretoken:"{{csrf_token}}",
+                    action:"post"
+                },
+                success:function(json) {
+                    // console.log(json)
+                    document.getElementById("cart-quantity").textContent = json.quantity
+                },
+                error:function(xhr, errmsg, err) {
+                    
+                }
+            })
+            // Send data to backend without refresh page
+        })
+    </script>
+{% endblock %}
