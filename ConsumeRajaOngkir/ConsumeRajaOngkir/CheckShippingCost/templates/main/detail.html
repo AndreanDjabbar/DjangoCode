@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br><br><br><br>
+    <div class="text-center" style="margin-top: 50px;">
+        <div style="display: flex; justify-content: center; gap: 200px;">
+            <div>
+                <h3>Origin</h3>
+                <br><br>
+                <p>Province : <b>{{origin_province}}</b></p>
+                <p>City     : <b>{{origin_city}}</b></p>
+            </div>
+            <div>
+                <h3>Destination</h3>
+                <br><br>
+                <p>Province : <b>{{destination_province}}</b></p>
+                <p>City     : <b>{{destination_city}}</b></p>
+            </div>
+        </div>
+        <br><br>
+        <p>Courier Provider: <b>{{name}}</b></p>
+        <br><br>
+        {% for service in detail_services %}
+            <div>
+                <p>Service: <b>{{service.service}}</b></p>
+                {% for cost in service.cost %}
+                    {% if cost.value %}
+                        <p>Cost: <b>{{cost.value}}</b></p>
+                    {% endif %}
+                    {% if cost.etd %}
+                        <p>Estimation Day: <b>{{cost.etd}}</b> day</p>
+                    {% endif %}
+                {% endfor %}
+                <br><br>
+            </div>
+        {% endfor %}
+        <br><br><br>
+        <a href="../" class="btn btn-primary" style="width: 150px;">Back</a>
+        <br><br><br>
+    </div>
+{% endblock %}
